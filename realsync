@@ -65,13 +65,17 @@ sub main {
         # Make remote script's subs available.
         eval("sub { $REM_SCRIPT }"); die $@ if $@;
 
+        if (scalar @ARGV == 2) {
+            $REALSYNC_SPEC_FILE = $ARGV[1];
+        }
+
         # If an argument is passed, chdir to that directory. Else use the current one.
         my $chdir = $ARGV[0];
         if (!defined $chdir && -f $REALSYNC_SPEC_FILE) {
             $chdir = ".";
         }
         if (!defined $chdir) {
-            die "Usage:\n  realsync SOURCE_DIRECTORY_WHICH_IS_REPLICATED\n";
+            die "Usage:\n  realsync SOURCE_DIRECTORY_WHICH_IS_REPLICATED [CONFIG_FILE]\n";
         }
         chdir($chdir) or die "Cannot set current directory to $chdir: $!\n";
 
