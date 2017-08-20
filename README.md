@@ -5,6 +5,12 @@ Developed by _Dmitry Koterov, http://en.dklab.ru/lib/dklab_realsync/ (C)_
 
 License: GPL
 
+## Changes
+
+1. Fixed error `Cannot lstat(filename): Value too large for defined data type`
+on linux by recompile `notify` with `-D_FILE_OFFSET_BITS=64`
+2. Added ability to specify custom config file: `realsync SOURCE_DIRECTORY_WHICH_IS_REPLICATED [CONFIG_FILE]`
+
 ## What it is
 
 RealSync allows you to establish a one-way synchronization between a local folder and a server's remote directory. The typical use case is to sync your local copy of a website's source code with the development server. The sync is kept over time, and happens in real-time.
