@@ -65,7 +65,7 @@ sub main {
         # Make remote script's subs available.
         eval("sub { $REM_SCRIPT }"); die $@ if $@;
 
-        if (scalar @ARGV == 2) {
+        if ($#ARGV == 1) {
             $REALSYNC_SPEC_FILE = $ARGV[1];
         }
 
